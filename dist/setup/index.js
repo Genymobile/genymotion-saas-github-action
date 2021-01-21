@@ -1,11 +1,11 @@
 require('./sourcemap-register.js');module.exports =
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 558:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
@@ -91,7 +91,6 @@ function escapeProperty(s) {
 /***/ 479:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -336,7 +335,6 @@ exports.getState = getState;
 /***/ 771:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 // For internal use, subject to change.
 var __importStar = (this && this.__importStar) || function (mod) {
@@ -372,7 +370,6 @@ exports.issueCommand = issueCommand;
 /***/ 373:
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -398,7 +395,6 @@ exports.toCommandValue = toCommandValue;
 /***/ 287:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -449,7 +445,6 @@ exports.exec = exec;
 /***/ 984:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -1056,7 +1051,6 @@ class ExecState extends events.EventEmitter {
 /***/ 73:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -1258,7 +1252,6 @@ function isUnixExecutable(stats) {
 /***/ 717:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -1555,124 +1548,124 @@ function copyFile(srcFile, destFile, force) {
 /***/ 884:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
 
+
+
 const core = __nccwpck_require__(479);
 const exec = __nccwpck_require__(287);
-const exec_sync = __nccwpck_require__(129).execSync;
-const path = __nccwpck_require__(622)
-
+const execSync = __nccwpck_require__(129).execSync;
+const path = __nccwpck_require__(622);
 
 /**
  * Install gmsaas version with the specified version
- * @param {string} gmsaas_version
+ * @param {string} gmsaasVersion Version of gmsaas.
  */
-async function installGmsaasCLI(gmsaas_version) {
-  try {
-    if (gmsaas_version) {
-      core.info(`Installing gmsaas ${gmsaas_version} ...`);
-      await exec.exec(`pip3 install gmsaas===${gmsaas_version}`);
-    } else {
-      core.info(`Installing gmsaas ...`);
-      await exec.exec(`pip3 install gmsaas`);
-    }
-    core.info(`gmsaas has been installed.`);
+async function installGmsaasCLI(gmsaasVersion) {
+    try {
+        if (gmsaasVersion) {
+            core.info(`Installing gmsaas ${gmsaasVersion} ...`);
+            await exec.exec(`pip3 install gmsaas===${gmsaasVersion}`);
+        } else {
+            core.info('Installing gmsaas ...');
+            await exec.exec('pip3 install gmsaas');
+        }
+        core.info('gmsaas has been installed.');
 
-    // Add gmsaas to PATH
-    core.addPath(path.join(process.env['HOME'], ".local/bin"));
-    return true
-   } catch (error) {
-    core.setFailed('Failed to install gmsaas: ' + error.message);
-  }
+        // Add gmsaas to PATH
+        core.addPath(path.join(process.env.HOME, '.local/bin'));
+    } catch (error) {
+        core.setFailed('Failed to install gmsaas: ' + error.message);
+    }
 }
 
 /**
  * Log in
- * @param {string} gmsaas_email
- * @param {string} gmsaas_password
+ * @param {string} gmsaasEmail Email of your Genymotion Cloud SaaS account.
+ * @param {string} gmsaasPassword Password of your Genymotion Cloud SaaS account.
  */
-async function login(gmsaas_email, gmsaas_password) {
-  try {
-    
-    core.info(`Login gmsaas ...`);
+async function login(gmsaasEmail, gmsaasPassword) {
+    try {
+        core.info('Login gmsaas ...');
 
-    await exec.exec(`gmsaas auth login ${gmsaas_email} ${gmsaas_password}`);
-    return true;
-   } catch (error) {
-    core.setFailed('Failed to login: ' + error.message);
-  }
+        await exec.exec(`gmsaas auth login ${gmsaasEmail} ${gmsaasPassword}`);
+    } catch (error) {
+        core.setFailed('Failed to login: ' + error.message);
+    }
 }
 
 /**
  * Configure gmsaas
  */
 async function configure() {
-  try {
-    core.info(`Configuring gmsaas ...`);
+    try {
+        core.info('Configuring gmsaas ...');
 
-    // set android sdk path
-    await exec.exec(`env`);
-    const ANDROID_SDK_ROOT = process.env['ANDROID_SDK_ROOT'];
-    await exec.exec(`gmsaas config set android-sdk-path ${ANDROID_SDK_ROOT}`);
+        // set Android SDK path
+        const ANDROID_SDK_ROOT = process.env.ANDROID_SDK_ROOT;
+        await exec.exec(`gmsaas config set android-sdk-path ${ANDROID_SDK_ROOT}`);
 
-   } catch (error) {
-    core.setFailed(error.message);
-  }
+        // set JSON Format
+        await exec.exec('gmsaas config set output-format json');
+    } catch (error) {
+        core.setFailed(error.message);
+    }
 }
 
 /**
- * Start and Connect Genymotion instances
- * @param {string} recipe_uuid
- * @param {string} adb_serial_port
+ * Start and Connect Genymotion Cloud SaaS instance
+ * @param {string} recipeUuid Instance recipe to use.
+ * @param {string} adbSerialPort ABD serial port to use (Optional).
+ * @param {string} instanceIndex Instance index for avoid conflict on instance name.
  */
-async function startInstance(recipe_uuid, adb_serial_port, instance_index) {
-  try {
-    const instance_name = `gminstance_${process.env.GITHUB_JOB}_${process.env.GITHUB_RUN_NUMBER}`;
-    const instance_uuid = exec_sync(`gmsaas instances start ${recipe_uuid} ${instance_name}_${instance_index}`).toString().split(/\r?\n/)[0];
-    core.info(`Instance started with instance_uuid ${instance_uuid}`);
-    core.setOutput('instance_uuid', instance_uuid);
-    core.exportVariable('INSTANCE_UUID', instance_uuid);
+async function startInstance(recipeUuid, adbSerialPort, instanceIndex) {
+    try {
+        const instanceName = `gminstance_${process.env.GITHUB_JOB}_${process.env.GITHUB_RUN_NUMBER}`;
+        const cmd = JSON.parse(
+            execSync(`gmsaas instances start ${recipeUuid} ${instanceName}_${instanceIndex}`).toString()
+        );
+        const instanceUuid = cmd.instance.uuid;
+        core.info(`Instance started with instance_uuid ${instanceUuid}`);
+        core.setOutput('instance_uuid', instanceUuid);
+        core.exportVariable('INSTANCE_UUID', instanceUuid);
 
-    let options;
-    if (adb_serial_port) {
-      options = ['--adb-serial-port', `${adb_serial_port}`]
+        let options;
+        if (adbSerialPort) {
+            options = ['--adb-serial-port', `${adbSerialPort}`];
+        }
+        await exec.exec(`gmsaas instances adbconnect ${instanceUuid}`, options, function(_error, stdout) {
+            core.info('Genymotion instance is connected: ' + stdout);
+            return stdout;
+        });
+    } catch (error) {
+        core.setFailed('Failed to start Genymotion instance: ' + error.message);
     }
-    await exec.exec(`gmsaas instances adbconnect ${instance_uuid}`, options, function (_error, stdout, _stderr) {
-      core.info(`Genymotion instance is connected: ` + stdout);
-      return stdout
-    });
-  } catch (error) {
-    core.setFailed('Failed to start Genymotion instance: ' + error.message);
-  }
-};
-
+}
 
 async function run() {
-  const gmsaas_version = core.getInput('gmsaas_version');
-  const gmsaas_email = core.getInput('email', { required: true });
-  const gmsaas_password = core.getInput('password', { required: true });
-  const recipe_uuid = core.getInput('recipe_uuid', { required: true });
-  const adb_serial_port = core.getInput('adb_serial_port');
-  const instance_index = core.getInput('instance_index');
+    const gmsaasVersion = core.getInput('gmsaas_version');
+    const gmsaasEmail = core.getInput('email', {required: true});
+    const gmsaasPassword = core.getInput('password', {required: true});
+    const recipeUuid = core.getInput('recipe_uuid', {required: true});
+    const adbSerialPort = core.getInput('adb_serial_port');
+    const instanceIndex = core.getInput('instance_index');
 
-  // Add USER_AGENT to improve customer support.
-  core.exportVariable('GMSAAS_USER_AGENT_EXTRA_DATA', 'githubactions');
+    // Add USER_AGENT to improve customer support.
+    core.exportVariable('GMSAAS_USER_AGENT_EXTRA_DATA', 'githubactions');
 
-  try {
+    try {
     // Install gmsaas
-    await installGmsaasCLI(gmsaas_version);
+        await installGmsaasCLI(gmsaasVersion);
 
-    // login
-    await login(gmsaas_email, gmsaas_password);
+        // configure
+        await configure();
 
-    // configure
-    await configure();
+        // login
+        await login(gmsaasEmail, gmsaasPassword);
 
-    // Start a Genymotion Cloud Instance
-    await startInstance(recipe_uuid, adb_serial_port, instance_index);
-
- 
-  } catch (error) {
-    core.setFailed(error.message);
-  }
+        // Start a Genymotion Cloud Instance
+        await startInstance(recipeUuid, adbSerialPort, instanceIndex);
+    } catch (error) {
+        core.setFailed(error.message);
+    }
 }
 
 run();
@@ -1683,7 +1676,6 @@ run();
 /***/ 357:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("assert");;
 
 /***/ }),
@@ -1691,7 +1683,6 @@ module.exports = require("assert");;
 /***/ 129:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("child_process");;
 
 /***/ }),
@@ -1699,7 +1690,6 @@ module.exports = require("child_process");;
 /***/ 614:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("events");;
 
 /***/ }),
@@ -1707,7 +1697,6 @@ module.exports = require("events");;
 /***/ 747:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("fs");;
 
 /***/ }),
@@ -1715,7 +1704,6 @@ module.exports = require("fs");;
 /***/ 87:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("os");;
 
 /***/ }),
@@ -1723,7 +1711,6 @@ module.exports = require("os");;
 /***/ 622:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("path");;
 
 /***/ }),
@@ -1731,7 +1718,6 @@ module.exports = require("path");;
 /***/ 669:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("util");;
 
 /***/ })

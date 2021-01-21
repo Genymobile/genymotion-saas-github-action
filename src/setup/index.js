@@ -50,9 +50,11 @@ async function configure() {
         core.info('Configuring gmsaas ...');
 
         // set Android SDK path
-        await exec.exec('env');
         const ANDROID_SDK_ROOT = process.env.ANDROID_SDK_ROOT;
         await exec.exec(`gmsaas config set android-sdk-path ${ANDROID_SDK_ROOT}`);
+
+        // set JSON Format
+        await exec.exec('gmsaas config set output-format json');
     } catch (error) {
         core.setFailed(error.message);
     }
@@ -67,8 +69,10 @@ async function configure() {
 async function startInstance(recipeUuid, adbSerialPort, instanceIndex) {
     try {
         const instanceName = `gminstance_${process.env.GITHUB_JOB}_${process.env.GITHUB_RUN_NUMBER}`;
-        const instanceUuid = execSync(`gmsaas instances start ${recipeUuid} ${instanceName}_${instanceIndex}`).toString()
-            .split(/\r?\n/)[0];
+        const cmd = JSON.parse(
+            execSync(`gmsaas instances start ${recipeUuid} ${instanceName}_${instanceIndex}`).toString()
+        );
+        const instanceUuid = cmd.instance.uuid;
         core.info(`Instance started with instance_uuid ${instanceUuid}`);
         core.setOutput('instance_uuid', instanceUuid);
         core.exportVariable('INSTANCE_UUID', instanceUuid);
@@ -101,11 +105,11 @@ async function run() {
     // Install gmsaas
         await installGmsaasCLI(gmsaasVersion);
 
-        // login
-        await login(gmsaasEmail, gmsaasPassword);
-
         // configure
         await configure();
+
+        // login
+        await login(gmsaasEmail, gmsaasPassword);
 
         // Start a Genymotion Cloud Instance
         await startInstance(recipeUuid, adbSerialPort, instanceIndex);

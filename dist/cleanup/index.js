@@ -1,11 +1,11 @@
 require('./sourcemap-register.js');module.exports =
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 558:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
@@ -91,7 +91,6 @@ function escapeProperty(s) {
 /***/ 479:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -336,7 +335,6 @@ exports.getState = getState;
 /***/ 771:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 // For internal use, subject to change.
 var __importStar = (this && this.__importStar) || function (mod) {
@@ -372,7 +370,6 @@ exports.issueCommand = issueCommand;
 /***/ 373:
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -398,7 +395,6 @@ exports.toCommandValue = toCommandValue;
 /***/ 287:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -449,7 +445,6 @@ exports.exec = exec;
 /***/ 984:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -1056,7 +1051,6 @@ class ExecState extends events.EventEmitter {
 /***/ 73:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -1258,7 +1252,6 @@ function isUnixExecutable(stats) {
 /***/ 717:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -1555,16 +1548,18 @@ function copyFile(srcFile, destFile, force) {
 /***/ 132:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
 
+
+
 const core = __nccwpck_require__(479);
 const exec = __nccwpck_require__(287);
 
 async function run() {
-  core.info('Stopping Genymotion Cloud SaaS instance');
-  try {
-    await exec.exec(`gmsaas instances stop ${process.env.INSTANCE_UUID}`)
-   } catch (error) {
-    core.setFailed(error.message);
-  }
+    core.info('Stopping Genymotion Cloud SaaS instance');
+    try {
+        await exec.exec(`gmsaas instances stop ${process.env.INSTANCE_UUID}`);
+    } catch (error) {
+        core.setFailed(error.message);
+    }
 }
 
 run();
@@ -1575,7 +1570,6 @@ run();
 /***/ 357:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("assert");;
 
 /***/ }),
@@ -1583,7 +1577,6 @@ module.exports = require("assert");;
 /***/ 129:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("child_process");;
 
 /***/ }),
@@ -1591,7 +1584,6 @@ module.exports = require("child_process");;
 /***/ 614:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("events");;
 
 /***/ }),
@@ -1599,7 +1591,6 @@ module.exports = require("events");;
 /***/ 747:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("fs");;
 
 /***/ }),
@@ -1607,7 +1598,6 @@ module.exports = require("fs");;
 /***/ 87:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("os");;
 
 /***/ }),
@@ -1615,7 +1605,6 @@ module.exports = require("os");;
 /***/ 622:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("path");;
 
 /***/ }),
@@ -1623,7 +1612,6 @@ module.exports = require("path");;
 /***/ 669:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("util");;
 
 /***/ })
