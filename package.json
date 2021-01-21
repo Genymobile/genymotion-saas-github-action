@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src",
     "build": "ncc build --source-map -o dist/setup/ src/setup/index.js && ncc build --source-map -o dist/cleanup/ src/cleanup/post.js"
   },
   "repository": {
@@ -21,5 +22,8 @@
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/exec": "^1.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^7.18.0"
   }
 }
