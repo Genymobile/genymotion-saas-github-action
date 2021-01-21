@@ -1556,10 +1556,10 @@ const execSync = __nccwpck_require__(129).execSync;
 const path = __nccwpck_require__(622);
 
 /**
- * Install gmsaas version with the specified version
- * @param {string} gmsaasVersion Version of gmsaas.
+ * Install gmsaas with the specified version
+ * @param {string} [gmsaasVersion] Version of gmsaas.
  */
-async function installGmsaasCLI(gmsaasVersion) {
+async function installGmsaasCli(gmsaasVersion) {
     try {
         if (gmsaasVersion) {
             core.info(`Installing gmsaas ${gmsaasVersion} ...`);
@@ -1573,7 +1573,7 @@ async function installGmsaasCLI(gmsaasVersion) {
         // Add gmsaas to PATH
         core.addPath(path.join(process.env.HOME, '.local/bin'));
     } catch (error) {
-        core.setFailed('Failed to install gmsaas: ' + error.message);
+        core.setFailed(`Failed to install gmsaas: ${error.message}`);
     }
 }
 
@@ -1588,7 +1588,7 @@ async function login(gmsaasEmail, gmsaasPassword) {
 
         await exec.exec(`gmsaas auth login ${gmsaasEmail} ${gmsaasPassword}`);
     } catch (error) {
-        core.setFailed('Failed to login: ' + error.message);
+        core.setFailed(`Failed to login: ${error.message}`);
     }
 }
 
@@ -1636,7 +1636,7 @@ async function startInstance(recipeUuid, adbSerialPort, instanceIndex) {
             return stdout;
         });
     } catch (error) {
-        core.setFailed('Failed to start Genymotion instance: ' + error.message);
+        core.setFailed(`Failed to start Genymotion instance: ${error.message}`);
     }
 }
 
@@ -1653,7 +1653,7 @@ async function run() {
 
     try {
     // Install gmsaas
-        await installGmsaasCLI(gmsaasVersion);
+        await installGmsaasCli(gmsaasVersion);
 
         // configure
         await configure();

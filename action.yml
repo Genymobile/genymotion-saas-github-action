@@ -1,16 +1,16 @@
 name: 'genymotion-saas-github-action'
-author: Genymobile
+author: Genymotion Cloud <genymotion-cloud@genymobile.com>
 description: |-
   |-
   This Github action launches Android devices on Genymotion Cloud SaaS.
-  Appium, Espresso, and others test automation frameworks can be run on those devices.
+  Appium, Espresso, and other test automation frameworks can be run on those devices.
   Setup instructions:
-  1. Create a Genymotion Cloud SaaS account: [https://cloud.geny.io](https://cloud.geny.io/?&utm_source=web-referral&utm_medium=docs&utm_campaign=bitrise&utm_content=signup)
+  1. Create a Genymotion Cloud SaaS account: [https://cloud.geny.io](https://cloud.geny.io/?&utm_source=web-referral&utm_medium=docs&utm_campaign=githubactions&utm_content=signup)
   1. Navigate to Default templates or templates:
     - Select a device.
-    - Click on dot menu and select details.
-    - On the description field, get the recipe UUID.
-    - Copy paste it to use it in this step.
+    - Click the dot menu and select details.
+    - Copy the recipe UUID from the Description field
+    - Paste it here to use it in this step.
 inputs:
   email:
     description: Email of your Genymotion Cloud SaaS account, if you don't have an account please create it first on [https://cloud.geny.io](https://cloud.geny.io/?&utm_source=web-referral&utm_medium=docs&utm_campaign=githubactions&utm_content=signup).
@@ -20,9 +20,9 @@ inputs:
     required: true
   recipe_uuid:
     description: |-
-      Instance recipe to use. Recipes can be listed with command line 'gmsaas recipes list',
+      Instance recipe to use. Recipes can be listed with command line `gmsaas recipes list`,
       or check https://support.genymotion.com/hc/en-us/articles/360007473658-Supported-Android-devices-templates-for-Genymotion-Cloud-SaaS
-      for a comprehensive list of all currently available recipes UUIDs.
+      for a comprehensive list of all currently available recipes.
     required: true
   adb_serial_port:
     description: |-
@@ -41,7 +41,7 @@ inputs:
 outputs:
   instance_uuid:
     description: |-
-      This output will include the instances UUID of started and connected instance.
+      This output will include the instance UUID of started and connected instance.
 
 runs:
   using: 'node12'
