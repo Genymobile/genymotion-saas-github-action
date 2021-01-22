@@ -4663,7 +4663,7 @@ async function startInstance(recipeUuid, adbSerialPort, instanceIndex) {
             options = ['--adb-serial-port', `${adbSerialPort}`];
         }
         await exec.exec(`gmsaas instances adbconnect ${instanceUuid}`, options, function(_error, stdout) {
-            core.info('Genymotion instance is connected: ' + stdout);
+            core.info(`Genymotion instance is connected: ${stdout}`);
             return stdout;
         });
     } catch (error) {

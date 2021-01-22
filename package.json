@@ -20,7 +20,7 @@
     "Test automation",
     "Genymobile"
   ],
-  "author": "",
+  "author": "Genymotion Cloud <genymotion-cloud@genymobile.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Genymobile/genymotion-saas-github-action/issues"
