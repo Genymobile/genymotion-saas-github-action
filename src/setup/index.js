@@ -4,6 +4,29 @@ const core = require('@actions/core');
 const exec = require('@actions/exec');
 const execSync = require('child_process').execSync;
 const path = require('path');
+const semver = require('semver');
+
+const MIN_GMSAAS_VERSION = '1.5.0';
+
+/**
+ * Check if gmsaas version fits with the minimum required version
+ * @param {string} [gmsaasVersion] Version of gmsaas.
+ */
+async function validateGmsaasVersion(gmsaasVersion) {
+    try {
+        if (gmsaasVersion) {
+            core.info(`Validating gmsaas ${gmsaasVersion} ...`);
+            if (semver.lt(gmsaasVersion, MIN_GMSAAS_VERSION)) {
+                core.setFailed(`Genymotion SaaS Github action requires gmsaas version ${MIN_GMSAAS_VERSION} or newer`);
+                return false;
+            }
+        }
+    } catch (error) {
+        core.setFailed(`Failed to validate gmsaas version: ${error.message}`);
+        return false;
+    }
+    return true;
+}
 
 /**
  * Install gmsaas with the specified version
@@ -102,17 +125,19 @@ async function run() {
     core.exportVariable('GMSAAS_USER_AGENT_EXTRA_DATA', 'githubactions');
 
     try {
-    // Install gmsaas
-        await installGmsaasCli(gmsaasVersion);
+        if (await validateGmsaasVersion(gmsaasVersion)) {
+            // Install gmsaas
+            await installGmsaasCli(gmsaasVersion);
 
-        // configure
-        await configure();
+            // configure
+            await configure();
 
-        // login
-        await login(gmsaasEmail, gmsaasPassword);
+            // login
+            await login(gmsaasEmail, gmsaasPassword);
 
-        // Start a Genymotion Cloud Instance
-        await startInstance(recipeUuid, adbSerialPort, instanceIndex);
+            // Start a Genymotion Cloud Instance
+            await startInstance(recipeUuid, adbSerialPort, instanceIndex);
+        }
     } catch (error) {
         core.setFailed(error.message);
     }
