@@ -35,10 +35,10 @@ async function validateGmsaasVersion(gmsaasVersion) {
 async function installGmsaasCli(gmsaasVersion) {
     try {
         if (gmsaasVersion) {
-            core.info(`Installing gmsaas ${gmsaasVersion} ...`);
+            core.info(`Installing gmsaas ${gmsaasVersion}...`);
             await exec.exec(`pip3 install gmsaas===${gmsaasVersion}`);
         } else {
-            core.info('Installing gmsaas ...');
+            core.info('Installing gmsaas...');
             await exec.exec('pip3 install gmsaas');
         }
         core.info('gmsaas has been installed.');
@@ -57,7 +57,7 @@ async function installGmsaasCli(gmsaasVersion) {
  */
 async function login(gmsaasEmail, gmsaasPassword) {
     try {
-        core.info('Login gmsaas ...');
+        core.info('Login gmsaas...');
 
         await exec.exec(`gmsaas auth login ${gmsaasEmail} ${gmsaasPassword}`);
     } catch (error) {
@@ -70,7 +70,7 @@ async function login(gmsaasEmail, gmsaasPassword) {
  */
 async function configure() {
     try {
-        core.info('Configuring gmsaas ...');
+        core.info('Configuring gmsaas...');
 
         // set Android SDK path
         const ANDROID_SDK_ROOT = process.env.ANDROID_SDK_ROOT;
@@ -87,7 +87,7 @@ async function configure() {
  * Start and Connect Genymotion Cloud SaaS instance
  * @param {string} recipeUuid Instance recipe to use.
  * @param {string} adbSerialPort ABD serial port to use (Optional).
- * @param {string} instanceIndex Instance index for avoid conflict on instance name.
+ * @param {string} instanceIndex Instance index to avoid conflict on instance name.
  */
 async function startInstance(recipeUuid, adbSerialPort, instanceIndex) {
     try {
@@ -126,16 +126,12 @@ async function run() {
 
     try {
         if (await validateGmsaasVersion(gmsaasVersion)) {
-            // Install gmsaas
             await installGmsaasCli(gmsaasVersion);
 
-            // configure
             await configure();
 
-            // login
             await login(gmsaasEmail, gmsaasPassword);
 
-            // Start a Genymotion Cloud Instance
             await startInstance(recipeUuid, adbSerialPort, instanceIndex);
         }
     } catch (error) {

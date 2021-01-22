@@ -9,7 +9,7 @@ description: |-
   1. Navigate to Default templates or templates:
     - Select a device.
     - Click the dot menu and select details.
-    - Copy the recipe UUID from the Description field
+    - Copy the recipe UUID from the Description field.
     - Paste it here to use it in this step.
 inputs:
   email:
@@ -27,16 +27,16 @@ inputs:
   adb_serial_port:
     description: |-
       If `adb_serial_port` option is set,
-      the instance will be connected to ADB on localhost:`adb_serial_port`.
+      the instance will be connected to ADB on `localhost:$adb_serial_port`.
       Otherwise it will be connected to a port given by your system,
       `gmsaas instances list` to know which one.
     required: false
   instance_index:
-    description: Retrieve an instance index for avoid conflict on instance name.
+    description: Retrieve an instance index to avoid conflict on instance name.
     required: false
     default: '${{ strategy.job-index }}'
   gmsaas_version:
-    description: Install a specific version of gmsaas, default is the latest.
+    description: Install a specific version of gmsaas (not recommended), default is the latest.
     required: false
 outputs:
   instance_uuid:
