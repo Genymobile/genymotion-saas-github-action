@@ -1,6 +1,6 @@
 # genymotion-saas-github-action
 
-GitHub action to start Genymotion Cloud SaaS instance using the
+GitHub action to start Genymotion Cloud SaaS instances using the
 [`gmsaas` command-line client](https://docs.genymotion.com/gmsaas/1.x/). It
 installs and configures the CLI with Genymotion Cloud SaaS credentials. Note
 that credentials keys should be stored as [GitHub secrets](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-an-organization).
@@ -8,10 +8,10 @@ that credentials keys should be stored as [GitHub secrets](https://docs.github.c
 
 ## Inputs
 
-- `email` {string} {required} Email of your Genymotion Cloud SaaS account, if you don't have an account please create it first on [https://cloud.geny.io](https://cloud.geny.io/?&utm_source=web-referral&utm_medium=docs&utm_campaign=githubactions&utm_content=signup). `GMSAAS_EMAIL` should be stored as a [GitHub secret](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-an-organization) and passed as in the
-  example below. **Never** store your `GMSAAS_EMAIL` as plain text in your workflow YAML.
+- `email` {string} {required} Email of your Genymotion Cloud SaaS account, if you don't have an account please create it first at [https://cloud.geny.io](https://cloud.geny.io/?&utm_source=web-referral&utm_medium=docs&utm_campaign=githubactions&utm_content=signup). `GMSAAS_EMAIL` should be stored as a [GitHub secret](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-an-organization) and passed as in the
+  example below. **Never** store your `GMSAAS_EMAIL` as plain text in your YAML workflow.
 - `password` {string} {required} The password of your Genymotion Cloud SaaS account. `GMSAAS_PASSWORD` should be stored as a [GitHub secret](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-an-organization) and passed as in the
-  example below. **Never** store your `GMSAAS_PASSWORD` as plain text in your workflow YAML.
+  example below. **Never** store your `GMSAAS_PASSWORD` as plain text in your YAML workflow.
 - `gmsaas_version` {string} {optional} Install a specific version of gmsaas (not recommended). Defaults to the latest version if not specified.
 - `recipe_uuid` {string} {required} Recipe UUID is the identifier used when starting an instance; it can be retrieved using `gmsaas recipes list`,
 or check [availables recipes](https://support.genymotion.com/hc/en-us/articles/360007473658-Supported-Android-devices-templates-for-Genymotion-Cloud-SaaS) for a comprehensive list of all currently available recipes.
@@ -19,13 +19,13 @@ or check [availables recipes](https://support.genymotion.com/hc/en-us/articles/3
 
 
 ## Requirements
-This action requires dependancies be installed  as part of your workflow:
+This action requires the following dependencies to be installed as part of your workflow:
 - `actions/setup-python`
 - `actions/setup-java`
 - `android-actions/setup-android`
 
 
-## Simple example workflow:
+## Simple workflow example:
 
 ```
 on: [push]
@@ -40,7 +40,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - uses: actions/setup-python@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
           python-version: "3.9.1"
           architecture: "x64"
@@ -61,7 +62,7 @@ jobs:
           recipe_uuid: ea5fda48-fa8b-48c1-8acc-07d910856141 # Google Pixel XL 8.1
 ```
 
-## Example workflow with multiple devices:
+## Workflow example with multiple devices:
 
 ```
 on: [push]
@@ -81,7 +82,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - uses: actions/setup-python@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
           python-version: "3.9.1"
           architecture: "x64"
@@ -102,7 +104,7 @@ jobs:
           recipe_uuid: ${{ matrix.recipe_uuid }}
 ```
 
-## Example workflow using ADB serial port:
+## Workflow example using ADB serial port:
 
 ```
 on: [push]
@@ -117,7 +119,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - uses: actions/setup-python@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
           python-version: "3.9.1"
           architecture: "x64"
