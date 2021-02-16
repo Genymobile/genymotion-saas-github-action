@@ -1,0 +1,39 @@
+{
+  "name": "genymotion-saas-github-action",
+  "version": "1.0.0",
+  "description": "Set up your GitHub Actions workflow with Genymotion Cloud SaaS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src",
+    "build": "ncc build --source-map -o dist/setup/ src/setup/index.js && ncc build --source-map -o dist/cleanup/ src/cleanup/post.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Genymobile/genymotion-saas-github-action.git"
+  },
+  "keywords": [
+    "Genymotion",
+    "Android",
+    "emulator",
+    "GitHub Actions",
+    "Test automation",
+    "Genymobile"
+  ],
+  "author": "Genymotion Cloud <genymotion-cloud@genymobile.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Genymobile/genymotion-saas-github-action/issues"
+  },
+  "homepage": "https://github.com/Genymobile/genymotion-saas-github-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/exec": "^1.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^7.18.0"
+  },
+  "engines": {
+    "node": ">=12"
+  }
+}

@@ -1,0 +1,50 @@
+name: 'genymotion-saas-github-action'
+author: Genymotion Cloud <genymotion-cloud@genymobile.com>
+description: |-
+  |-
+  This Github action launches Android devices on Genymotion Cloud SaaS.
+  Appium, Espresso, and other test automation frameworks can be run on those devices.
+  Setup instructions:
+  1. Create a Genymotion Cloud SaaS account: [https://cloud.geny.io](https://cloud.geny.io/?&utm_source=web-referral&utm_medium=docs&utm_campaign=githubactions&utm_content=signup)
+  1. Navigate to Default templates or templates:
+    - Select a device.
+    - Click the dot menu and select details.
+    - Copy the recipe UUID from the Description field.
+    - Paste it here to use it in this step.
+inputs:
+  email:
+    description: Email of your Genymotion Cloud SaaS account, if you don't have an account please create it first on [https://cloud.geny.io](https://cloud.geny.io/?&utm_source=web-referral&utm_medium=docs&utm_campaign=githubactions&utm_content=signup).
+    required: true
+  password:
+    description: Password of your Genymotion Cloud SaaS account.
+    required: true
+  recipe_uuid:
+    description: |-
+      Instance recipe to use. Recipes can be listed with command line `gmsaas recipes list`,
+      or check https://support.genymotion.com/hc/en-us/articles/360007473658-Supported-Android-devices-templates-for-Genymotion-Cloud-SaaS
+      for a comprehensive list of all currently available recipes.
+    required: true
+  adb_serial_port:
+    description: |-
+      If `adb_serial_port` option is set,
+      the instance will be connected to ADB on `localhost:$adb_serial_port`.
+      Otherwise it will be connected to a port given by your system,
+      `gmsaas instances list` to know which one.
+    required: false
+  instance_index:
+    description: Retrieve an instance index to avoid conflict on instance name.
+    required: false
+    default: '${{ strategy.job-index }}'
+  gmsaas_version:
+    description: Install a specific version of gmsaas (not recommended), default is the latest.
+    required: false
+outputs:
+  instance_uuid:
+    description: |-
+      This output will include the instance UUID of started and connected instance.
+
+runs:
+  using: 'node12'
+  main: 'dist/setup/index.js'
+  post: 'dist/cleanup/index.js'
+
