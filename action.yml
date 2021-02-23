@@ -1,7 +1,6 @@
 name: 'genymotion-saas-github-action'
 author: Genymotion Cloud <genymotion-cloud@genymobile.com>
 description: |-
-  |-
   This Github action launches Android devices on Genymotion Cloud SaaS.
   Appium, Espresso, and other test automation frameworks can be run on those devices.
   Setup instructions:
@@ -48,3 +47,6 @@ runs:
   main: 'dist/setup/index.js'
   post: 'dist/cleanup/index.js'
 
+branding:
+  icon: 'cloud'
+  color: 'red'
