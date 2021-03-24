@@ -1,15 +1,8 @@
 name: 'genymotion-saas-github-action'
 author: Genymotion Cloud <genymotion-cloud@genymobile.com>
 description: |-
-  This Github action launches Android devices on Genymotion Cloud SaaS.
-  Appium, Espresso, and other test automation frameworks can be run on those devices.
-  Setup instructions:
-  1. Create a Genymotion Cloud SaaS account: [https://cloud.geny.io](https://cloud.geny.io/?&utm_source=web-referral&utm_medium=docs&utm_campaign=githubactions&utm_content=signup)
-  1. Navigate to Default templates or templates:
-    - Select a device.
-    - Click the dot menu and select details.
-    - Copy the recipe UUID from the Description field.
-    - Paste it here to use it in this step.
+  Launch Android devices on Genymotion SaaS.
+  Run your automation tests (Appium, Espresso and others) on those devices.
 inputs:
   email:
     description: Email of your Genymotion Cloud SaaS account, if you don't have an account please create it first on [https://cloud.geny.io](https://cloud.geny.io/?&utm_source=web-referral&utm_medium=docs&utm_campaign=githubactions&utm_content=signup).
