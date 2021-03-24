@@ -1,4 +1,4 @@
-name: 'genymotion-saas-github-action'
+name: 'Genymotion SaaS Action'
 author: Genymotion Cloud <genymotion-cloud@genymobile.com>
 description: |-
   Launch Android devices on Genymotion SaaS.
