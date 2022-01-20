@@ -55,7 +55,7 @@ jobs:
         uses: android-actions/setup-android@v2
 
       - name: Start Genymotion Cloud SaaS instance
-        uses:  genymobile/genymotion-saas-github-action@v1
+        uses:  genymobile/genymotion-saas-github-action@v0.3
         with:
           email: ${{ secrets.GMSAAS_EMAIL }}
           password: ${{ secrets.GMSAAS_PASSWORD }}
@@ -97,7 +97,7 @@ jobs:
         uses: android-actions/setup-android@v2
 
       - name: Start Genymotion Cloud SaaS instance
-        uses:  genymobile/genymotion-saas-github-action@v1
+        uses:  genymobile/genymotion-saas-github-action@v0.3
         with:
           email: ${{ secrets.GMSAAS_EMAIL }}
           password: ${{ secrets.GMSAAS_PASSWORD }}
@@ -134,7 +134,7 @@ jobs:
         uses: android-actions/setup-android@v2
 
       - name: Start Genymotion Cloud SaaS instance
-        uses:  genymobile/genymotion-saas-github-action@v1
+        uses:  genymobile/genymotion-saas-github-action@v0.3
         with:
           email: ${{ secrets.GMSAAS_EMAIL }}
           password: ${{ secrets.GMSAAS_PASSWORD }}
