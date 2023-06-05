@@ -131,7 +131,9 @@ async function run() {
             await configure();
 
             await login(gmsaasEmail, gmsaasPassword);
+        }
 
+        if (recipeUuid) {
             await startInstance(recipeUuid, adbSerialPort, instanceIndex);
         }
     } catch (error) {

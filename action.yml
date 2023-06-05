@@ -15,7 +15,6 @@ inputs:
       Instance recipe to use. Recipes can be listed with command line `gmsaas recipes list`,
       or check https://support.genymotion.com/hc/en-us/articles/360007473658-Supported-Android-devices-templates-for-Genymotion-Cloud-SaaS
       for a comprehensive list of all currently available recipes.
-    required: true
   adb_serial_port:
     description: |-
       If `adb_serial_port` option is set,
