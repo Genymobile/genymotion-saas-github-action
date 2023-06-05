@@ -117,7 +117,7 @@ async function run() {
     const gmsaasVersion = core.getInput('gmsaas_version');
     const gmsaasEmail = core.getInput('email', {required: true});
     const gmsaasPassword = core.getInput('password', {required: true});
-    const recipeUuid = core.getInput('recipe_uuid', {required: true});
+    const recipeUuid = core.getInput('recipe_uuid');
     const adbSerialPort = core.getInput('adb_serial_port');
     const instanceIndex = core.getInput('instance_index');
 
