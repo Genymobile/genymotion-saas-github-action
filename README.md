@@ -38,18 +38,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
-          python-version: "3.9.1"
-          architecture: "x64"
+          python-version: "3.10.11"
 
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          java-version: 1.8
+          java-version: "17"
+          distribution: "temurin"
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
@@ -80,18 +79,17 @@ jobs:
           - 4c015ada-e64e-4f5d-a320-06cbf6e95648 # android 10
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
-          python-version: "3.9.1"
-          architecture: "x64"
+          python-version: "3.10.11"
 
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          java-version: 1.8
+          java-version: "17"
+          distribution: "temurin"
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
@@ -117,18 +115,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
-          python-version: "3.9.1"
-          architecture: "x64"
+          python-version: "3.10.11"
 
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          java-version: 1.8
+          java-version: "17"
+          distribution: "temurin"
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
