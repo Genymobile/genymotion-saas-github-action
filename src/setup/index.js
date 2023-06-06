@@ -121,9 +121,6 @@ async function run() {
     const adbSerialPort = core.getInput('adb_serial_port');
     const instanceIndex = core.getInput('instance_index');
 
-    // Add USER_AGENT to improve customer support.
-    core.exportVariable('GMSAAS_USER_AGENT_EXTRA_DATA', 'githubactions');
-
     try {
         if (await validateGmsaasVersion(gmsaasVersion)) {
             await installGmsaasCli(gmsaasVersion);
@@ -134,6 +131,8 @@ async function run() {
         }
 
         if (recipeUuid) {
+            // Add USER_AGENT to improve customer support.
+            core.exportVariable('GMSAAS_USER_AGENT_EXTRA_DATA', 'githubactions');
             await startInstance(recipeUuid, adbSerialPort, instanceIndex);
         }
     } catch (error) {

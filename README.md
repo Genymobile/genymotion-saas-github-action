@@ -13,7 +13,7 @@ that credentials keys should be stored as [GitHub secrets](https://docs.github.c
 - `password` {string} {required} The password of your Genymotion Cloud SaaS account. `GMSAAS_PASSWORD` should be stored as a [GitHub secret](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-an-organization) and passed as in the
   example below. **Never** store your `GMSAAS_PASSWORD` as plain text in your YAML workflow.
 - `gmsaas_version` {string} {optional} Install a specific version of gmsaas (not recommended). Defaults to the latest version if not specified.
-- `recipe_uuid` {string} Recipe UUID is the identifier used when starting an instance; it can be retrieved using `gmsaas recipes list`,
+- `recipe_uuid` {string} {optional} Recipe UUID is the identifier used when starting an instance; it can be retrieved using `gmsaas recipes list`,
 or check [availables recipes](https://support.genymotion.com/hc/en-us/articles/360007473658-Supported-Android-devices-templates-for-Genymotion-Cloud-SaaS) for a comprehensive list of all currently available recipes.
 - `adb_serial_port` {string} {optional} port which the instance will be connected to ADB. Defaults to None
 
