@@ -13,7 +13,7 @@ that credentials keys should be stored as [GitHub secrets](https://docs.github.c
 - `password` {string} {required} The password of your Genymotion Cloud SaaS account. `GMSAAS_PASSWORD` should be stored as a [GitHub secret](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-an-organization) and passed as in the
   example below. **Never** store your `GMSAAS_PASSWORD` as plain text in your YAML workflow.
 - `gmsaas_version` {string} {optional} Install a specific version of gmsaas (not recommended). Defaults to the latest version if not specified.
-- `recipe_uuid` {string} {required} Recipe UUID is the identifier used when starting an instance; it can be retrieved using `gmsaas recipes list`,
+- `recipe_uuid` {string} {optional} Recipe UUID is the identifier used when starting an instance; it can be retrieved using `gmsaas recipes list`,
 or check [availables recipes](https://support.genymotion.com/hc/en-us/articles/360007473658-Supported-Android-devices-templates-for-Genymotion-Cloud-SaaS) for a comprehensive list of all currently available recipes.
 - `adb_serial_port` {string} {optional} port which the instance will be connected to ADB. Defaults to None
 
@@ -38,18 +38,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
-          python-version: "3.9.1"
-          architecture: "x64"
+          python-version: "3.10.11"
 
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          java-version: 1.8
+          java-version: "17"
+          distribution: "temurin"
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
@@ -80,18 +79,17 @@ jobs:
           - 4c015ada-e64e-4f5d-a320-06cbf6e95648 # android 10
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
-          python-version: "3.9.1"
-          architecture: "x64"
+          python-version: "3.10.11"
 
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          java-version: 1.8
+          java-version: "17"
+          distribution: "temurin"
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
@@ -117,18 +115,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
-          python-version: "3.9.1"
-          architecture: "x64"
+          python-version: "3.10.11"
 
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          java-version: 1.8
+          java-version: "17"
+          distribution: "temurin"
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
